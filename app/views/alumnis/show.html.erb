@@ -1,0 +1,45 @@
+<h1>My Profile</h1>
+
+
+<%= image_tag(@alumni.image.url, :size => "260x180") %> 
+
+ 
+<table>
+	<tr>
+			<td>Name:</td>
+			<td><%= @alumni.first_name %></td>
+	</tr>
+	<tr>
+			<td>Branch:</td>
+			<td><%= @alumni.branch%></td>
+	</tr>
+	<tr>
+			<td>Email:</td>
+			<td><%= @alumni.email%></td>
+	</tr>
+	<tr>
+			<td>Contact</td>
+			<td><%= @alumni.contact_no%></td>
+	</tr>
+	<tr>
+			<td>Birthdate:</td>
+			<td><%= @alumni.birthdate%></td>
+	</tr>
+	<tr>
+			<td>Company:</td>
+			<td><%= @alumni.company%></td>
+	</tr>
+	<tr>
+			<td>Post In Compny:</td>
+			<td><%= @alumni.post_in_company%></td>
+	</tr>
+	<tr>
+			<td>Area of Interest:</td>
+			<td><%= @alumni.area_of_interest%></td>
+	</tr>
+</table>
+<li><%= link_to 'My Blog', getarticles_path(@alumni.id) %></li>
+<li><%= link_to 'edit', edit_alumni_path(@alumni.id) %></li>
+
+
+

@@ -1,0 +1,12 @@
+<h1 align:"center">Articles</h1>
+<div class="w3-container">
+    <% @articles.each do |article| %>
+    <div class="w3-container w3-card-4 w3-margin">
+     <header class="w3-container w3-grey w3-center"><h2><%= article.title %></h2></header> 
+      <p><%= article.content %></p>
+    <footer class="w3-container w3-grey">
+        <button class="w3-btn w3-black"><%= link_to 'Show', article_path(article) %></button>
+        
+      <% end%>
+    </footer>
+    </div>

@@ -1,0 +1,44 @@
+<%= form_for :alumni do |f| %>
+  
+  
+    <%= f.label :firstname %>
+    <%= f.text_field :first_name, :placeholder => "firstname"%><br>
+ 
+  
+    <%= f.label :lastname %>
+    <%= f.text_field :last_name %><br>
+  
+ 
+    <%= f.label :contact_no %>
+    <%= f.number_field :contact_no %><br>
+ 
+    <%= f.label :branch %>
+   <%= f.select :branch, ["CSE","EE","EN","IT","MECH"]%><br>
+   
+  
+    <%= f.label :birthdate %>
+    <%= f.text_field :birthdate, "data-provide" => 'datepicker' %>
+  
+    <%= f.email_field :email, :placeholder => "Email" %> <br>
+    
+     <%= f.label :Company %>
+    <%= f.text_field :company%><br>
+
+    <%= f.label :PostInCompany %>
+    <%= f.text_field :post_in_company%><br>
+
+   
+    <%= f.label :AreaOfInterest %>
+    <%= f.text_field :area_of_interest%><br>
+
+     <%= f.text_field :username, :placeholder => "username" %> <br>
+    <%= f.password_field :password, :placeholder => "Password" %> 
+    <br>
+    <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: 'form-control'%>
+  </div><br>
+    <%= f.submit %>
+ 
+  
+<% end %>

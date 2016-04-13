@@ -1,0 +1,11 @@
+<h1>Project</h1>
+<h3><%= @project.project_name%></h3>
+<p>
+	<%= @project.details %>
+</p>
+
+<% if Project.where("student_id = :student_id",
+      {student_id: session[:student_id]}).first %>
+<button><%= link_to 'Edit', edit_project_path(@project) %> </button> 
+<button><%= link_to 'Back', projects_path %></button>
+<% end%>

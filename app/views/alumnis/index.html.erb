@@ -1,0 +1,6 @@
+<h1>My Profile</h1>
+<ul>
+	<li><%= link_to 'Show', alumni_path(session[:alumni_id])%></li>
+	<li><%= link_to 'ShowRequests', getrequests_path%></li>
+	<li><%= link_to 'My Blog', getarticles_path(session[:alumni_id]) %></li>
+</ul>

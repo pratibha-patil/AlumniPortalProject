@@ -1,0 +1,14 @@
+<div class="w3-container">
+  <strong><%= comment.commenter %></strong>
+  <p>
+	<%= comment.body %>
+  </p>
+
+ 
+
+<button class="w3-btn w3-black">
+<%= link_to 'Destroy Comment', [comment.article, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</button>
+</div>

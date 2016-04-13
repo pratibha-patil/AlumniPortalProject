@@ -1,0 +1,14 @@
+<%= form_for([@article, Comment.new]) do |f| %>
+  <div class="w3-container">
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter %>
+  </div>
+  <div class="w3-container">
+    <%= f.label :body %><br>
+      <%= f.text_area :body %>
+  </div>
+  <div class="w3-container">
+      <br>
+    <%= f.submit %>
+  </div>
+<% end %>

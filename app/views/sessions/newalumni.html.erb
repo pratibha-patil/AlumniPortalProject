@@ -1,0 +1,9 @@
+<div>
+<h1>For Alumni</h1>
+
+<%= form_for(:session, url: loginalumni_path) do |f| %> 
+   <%= f.text_field :username ,:placeholder => "username"%>
+  <%= f.password_field :Password, :placeholder => "Password" %> 
+  <%= f.submit "Log in" %>
+<% end %>
+</div>

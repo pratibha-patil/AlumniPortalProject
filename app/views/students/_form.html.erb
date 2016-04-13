@@ -1,0 +1,39 @@
+
+<%= form_for :student do |f| %>
+  
+  
+    <%= f.label :firstname %>
+    <%= f.text_field :first_name, :placeholder => "firstname"%><br>
+ 
+ 
+
+    <%= f.label :lastname %>
+    <%= f.text_field :last_name %><br>
+  
+  
+    <%= f.label :PRN_no %>
+    <%= f.text_field :PRN_no %><br>
+  
+ 
+    <%= f.label :contact_no %>
+    <%= f.number_field :contact_no %><br>
+ 
+    <%= f.label :branch %>
+   <%= f.select :branch, ["CSE","EE","EN","IT","MECH"]%><br>
+   
+  
+    <%= f.label :birthdate %>
+    <%= f.text_field :birthdate, "data-provide" => 'datepicker' %>
+  
+    <%= f.email_field :email, :placeholder => "Email" %> <br>
+    <div class="form-group">
+    <%= f.label :profilephoto %>
+    <%= f.file_field :image, class: 'form-control'%>
+  </div>
+     <%= f.text_field :username, :placeholder => "username" %> <br>
+    <%= f.password_field :password, :placeholder => "Password" %> 
+    <br>
+    <%= f.submit %>
+ 
+  
+<% end %>

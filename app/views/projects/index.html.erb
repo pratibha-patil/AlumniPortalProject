@@ -1,0 +1,29 @@
+<h1>Listing Projects</h1>
+<button><%= link_to 'New Project', new_project_path %></button>
+<div>
+	<% current_student.projects.each do |project| %>
+		<h2><%= project.project_name %></h2>
+		<p>
+			<%= project.details%>
+		</p>
+		<table>
+			<tr>
+					<td><%= link_to 'Show', project_path(project)%></td>
+					<td><%= link_to 'Edit', edit_project_path(project)%></td>
+					<td><%= link_to 'Destroy', project_path(project),
+			              method: :delete,
+			              data: { confirm: 'Are you sure?' }%>
+	                </td>
+
+	               <% if preq=ProjectRequest.where("project_id = :project_id AND status = :status",
+			{project_id: project.id, status: "true"}).first %>
+	               <td><%= link_to "#{preq.alumni.first_name} #{preq.alumni.last_name}",alumni_path(preq.alumni)%></td>
+	               <%else %>
+	               		<td>
+	               			<%= link_to "SearchGuide", guide_path(project)%>	
+	               		</td>
+	               	<% end %>
+			</tr>	
+		</table>
+	<% end %>
+</div>

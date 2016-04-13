@@ -1,0 +1,15 @@
+<h1>List of Alumni</h1>
+	<table>
+		<tr>
+			<th>Name</th>
+
+		</tr>
+		<% @alumnis.each do |alumni| %>
+		<tr><td><%= alumni.first_name%>&nbsp;<%= alumni.last_name%></td>
+			<td><%= link_to 'Viewprofile',alumni_path(alumni)%></td>
+			<td><%= link_to 'Send Request',request_path(alumni)%></td>
+		</tr>
+		<% end%>
+	</table>
+	
+

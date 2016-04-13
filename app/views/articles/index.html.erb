@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>articles</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<body>
+<div class="w3-container">
+        <h1 class="w3-xxxlarge w3-center">Listing Articles</h1>
+  <ul class="w3-navbar w3-black">
+   
+      <% if Article.where("alumni_id = :alumni_id",
+      {alumni_id: session[:alumni_id]}).first %>
+      <li><button class="w3-btn w3-red"><%= link_to 'New article', new_article_path %></button></li>
+      <% end %>
+  </ul>
+</div>
+<div class="w3-container">
+    <% @articles.each do |article| %>
+    <div class="w3-container w3-card-4 w3-margin">
+     <header class="w3-container w3-grey w3-center"><h2><%= article.title %></h2></header> 
+      <p><%= article.content %></p>
+    <footer class="w3-container w3-grey">
+        <button class="w3-btn w3-black"><%= link_to 'Show', article_path(article) %></button>
+          <% if Article.where("alumni_id = :alumni_id AND id = :id",
+      {alumni_id: session[:alumni_id],id: article.id}).first %>
+
+
+        <button class="w3-btn w3-black"><%= link_to 'Edit', edit_article_path(article) %></button>
+        <button class="w3-btn w3-black"><%= link_to 'Destroy', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></button>
+        
+      <% end%>
+    </footer>
+    </div>
+  <% end %>
+</div>
+
+</body>
+
+
+</html> 
+
+

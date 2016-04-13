@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<body>
+
+<div class="w3-row w3-margin w3-border-0">
+  <div class="w3-col w3-margin-0" style="width:70%">
+  		<div class="w3-container">
+  			<h1 class="w3-teal w3-center">Article</h1>
+  			<h2 class="w3-dark-grey w3-center"><%= @article.title %></h2>
+  			<p class="w3-light-grey">
+  				<%= @article.content %>
+  			</p>
+        <%= image_tag(@article.image.url, :size => "300x220") %> 
+  		</div>
+      <div class="w3-container">
+          <h3 class="w3-dark-grey">Add a comment:</h2>
+        <%= render 'comments/form' %>
+      </div>  
+      <% if Article.where("alumni_id = :alumni_id",
+      {alumni_id: session[:alumni_id]}).first %>
+<button class="w3-btn w3-black w3-margin"><%= link_to 'Edit', edit_article_path(@article) %> </button> 
+
+<button class="w3-btn w3-black"><%= link_to 'Back', getarticles_path(session[:alumni_id]) %></button>
+<% end %>
+</div>
+<div class="w3-col" style="width:30%">
+      <h1 class="w3-teal">Recent Comments</h1>
+      <div class="w3-container">
+             <%= render @article.comments %>
+      </div>
+
+  </div>
+
+</body>
+</html>
+ 
+
+
+

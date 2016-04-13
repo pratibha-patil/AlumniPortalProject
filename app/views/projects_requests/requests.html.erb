@@ -1,0 +1,16 @@
+<table>
+		<tr>
+			<th>Name</th>
+			<th>Project</th>
+			
+		</tr>
+		<% @projectrequest.each do |request| %>
+
+		
+			<tr><td><%= request.project.student.first_name %>&nbsp;<%= request.project.student.last_name%></td>
+				 <td><%=link_to 'project' ,project_path(request.project) %></td>
+				<td><%= request.project.project_name %></td>
+				<td><%= link_to 'Accept',accept_path(request) %></td>
+			</tr>
+		<% end%>
+</table>

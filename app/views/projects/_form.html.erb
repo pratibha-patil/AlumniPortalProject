@@ -1,0 +1,14 @@
+<%= form_for(:project, url: projects_path) do |f| %>
+
+<h1><%= f.label :ProjectName %></h1> 
+<div><%= f.text_field :project_name,size: "60" %></div> 
+
+<h1><%= f.label :ProjectDetails %></h1> 
+<div><%= f.text_field :details,size: "60x12" %></div> 
+
+ <div>
+    <%= f.submit %><br>
+  </div>
+ 
+<% end %>
+
