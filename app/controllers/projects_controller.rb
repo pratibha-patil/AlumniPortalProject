@@ -1,5 +1,6 @@
-class ProjectsController < ApplicationController
-	 def index
+ class ProjectsController < ApplicationController
+	 before_action :require_student, only: [:edit]
+   def index
     @projects = Project.all
     end
 
@@ -34,6 +35,8 @@ class ProjectsController < ApplicationController
    end
     def destroy
       @project = Project.find(params[:id])
+      
+      ProjectRequest.where(project_id: @project.id).destroy_all
       @project.destroy
       redirect_to projects_path
    end

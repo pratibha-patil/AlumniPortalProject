@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-
+  before_action :require_alumni, only: [:edit]
 	 def index
     @articles = Article.where(alumni_id: params[:id])
     end

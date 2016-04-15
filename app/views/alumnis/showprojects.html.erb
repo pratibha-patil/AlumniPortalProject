@@ -1,0 +1,17 @@
+<h1>Student Names</h1>
+<table>
+		<tr>
+			<th>Name</th>
+			<th>Project</th>
+			
+		</tr>
+		<% @projects.each do |project| %>
+
+		
+			<tr><td><%= link_to "#{project.student.first_name} #{project.student.last_name}",student_path(project.student)%></td>
+				 <td><%=link_to project.project_name ,project_path(project) %></td>
+				
+				
+			</tr>
+		<% end%>
+</table>

@@ -6,7 +6,7 @@ class ProjectsRequestsController < ApplicationController
 		@projectrequest.status="false"
 
 		if @projectrequest.save
-            redirect_to alumni_path
+            redirect_to(:back)
           else
             render '/'
           end
@@ -42,7 +42,10 @@ class ProjectsRequestsController < ApplicationController
         render '/'
       end
    end
-
+   	def showprojects
+       @projectaccepted=ProjectRequest.where("alumni_id = :alumni_id AND status = :status",
+			{alumni_id: current_alumni.id, status: "true"})
+  	end
    	private
   def request_params
     params.require(:project_requests).permit(:project_id, :alumni_id,:status)

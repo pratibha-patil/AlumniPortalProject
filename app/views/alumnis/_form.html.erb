@@ -1,6 +1,18 @@
-<%= form_for :alumni do |f| %>
+<%= form_for @alumni do |f| %>
   
-  
+    <% if @alumni.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@alumni.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @alumni.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     <%= f.label :firstname %>
     <%= f.text_field :first_name, :placeholder => "firstname"%><br>
  
@@ -10,7 +22,7 @@
   
  
     <%= f.label :contact_no %>
-    <%= f.number_field :contact_no %><br>
+    <%= f.text_field :contact_no %><br>
  
     <%= f.label :branch %>
    <%= f.select :branch, ["CSE","EE","EN","IT","MECH"]%><br>

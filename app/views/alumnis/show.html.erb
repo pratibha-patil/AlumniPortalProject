@@ -39,7 +39,10 @@
 	</tr>
 </table>
 <li><%= link_to 'My Blog', getarticles_path(@alumni.id) %></li>
-<li><%= link_to 'edit', edit_alumni_path(@alumni.id) %></li>
 
+<% if Alumni.where("id = :id",
+      {id: session[:alumni_id]}).first %>
+<li><%= link_to 'edit', edit_alumni_path(@alumni.id) %></li>
+<%end%>
 
 

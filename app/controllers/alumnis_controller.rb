@@ -1,5 +1,6 @@
 class AlumnisController < ApplicationController
-	def new
+	before_action :require_alumni, only: [:edit]
+  def new
 		@alumni = Alumni.new
 	end
    def edit
@@ -34,11 +35,12 @@ class AlumnisController < ApplicationController
   #this method will list all alumni 
    def list
       session[:project]=params[:id];
-      @alumnis=Alumni.all
+     # @alumnis=Alumni.all
+     @alumnis=Alumni.search(params[:search])
     end 
   
-  def showprofile
-    @alumni=Alumni.find(params[:id])
+  def showprojects
+    @projects=current_alumni.projects
   end
   private
     

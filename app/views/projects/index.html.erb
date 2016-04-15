@@ -9,7 +9,7 @@
 		<table>
 			<tr>
 					<td><%= link_to 'Show', project_path(project)%></td>
-					<td><%= link_to 'Edit', edit_project_path(project)%></td>
+					<td><%= link_to 'Edit', edit_project_path(project.id)%></td>
 					<td><%= link_to 'Destroy', project_path(project),
 			              method: :delete,
 			              data: { confirm: 'Are you sure?' }%>
@@ -18,6 +18,7 @@
 	               <% if preq=ProjectRequest.where("project_id = :project_id AND status = :status",
 			{project_id: project.id, status: "true"}).first %>
 	               <td><%= link_to "#{preq.alumni.first_name} #{preq.alumni.last_name}",alumni_path(preq.alumni)%></td>
+	               
 	               <%else %>
 	               		<td>
 	               			<%= link_to "SearchGuide", guide_path(project)%>	

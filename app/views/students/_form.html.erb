@@ -1,5 +1,5 @@
 
-<%= form_for :student do |f| %>
+<%= form_for @student do |f| %>
   
   
     <%= f.label :firstname %>
@@ -16,7 +16,7 @@
   
  
     <%= f.label :contact_no %>
-    <%= f.number_field :contact_no %><br>
+    <%= f.text_field :contact_no %><br>
  
     <%= f.label :branch %>
    <%= f.select :branch, ["CSE","EE","EN","IT","MECH"]%><br>

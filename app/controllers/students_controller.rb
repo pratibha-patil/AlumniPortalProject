@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
 
- before_action :require_student, only: [:index, :show,:edit]
+ before_action :require_student, only: [:edit]
 
 	def new
 		@student = Student.new
@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
       @student = Student.new(student_params)
 
       if @student.save
-        redirect_to root_url
+        redirect_to 'login'
       else
        	redirect_to '/'
       end

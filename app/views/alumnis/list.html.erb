@@ -1,4 +1,12 @@
 <h1>List of Alumni</h1>
+	
+	<%=form_tag guide_path,:method =>'get' do |f|%>
+	<p>
+		<%= text_field_tag :search,params[:search]%>
+		<%= submit_tag "Search"%>
+	</p>
+	<% end %>
+
 	<table>
 		<tr>
 			<th>Name</th>
@@ -7,7 +15,13 @@
 		<% @alumnis.each do |alumni| %>
 		<tr><td><%= alumni.first_name%>&nbsp;<%= alumni.last_name%></td>
 			<td><%= link_to 'Viewprofile',alumni_path(alumni)%></td>
-			<td><%= link_to 'Send Request',request_path(alumni)%></td>
+			
+			<% if ProjectRequest.where("alumni_id = :alumni_id AND status = :status AND project_id = :project_id",
+		{alumni_id: alumni.id, status: "false",project_id:session[:project]}).first %>
+						<td>request sent</td>
+			<%else%>
+					<td><%= link_to 'Send Request',request_path(alumni)%></td>
+			<%end%>
 		</tr>
 		<% end%>
 	</table>

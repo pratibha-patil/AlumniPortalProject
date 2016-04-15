@@ -2,14 +2,9 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'welcome#index'
-  get 'students' => 'students#index'
- get 'studentsignup' => 'students#new'
-  get 'alumnisignup' => 'alumnis#new'
-post 'studentsignup' => 'students#create'
-  post 'alumnisignup' => 'alumnis#create'
-
+  resources :students
+  resources :alumnis 
+  resources :projects
   #links to sessions actions
   get '/login' =>'sessions#new'
   post 'login' =>'sessions#create'
@@ -21,15 +16,24 @@ post 'studentsignup' => 'students#create'
   get 'signupalumni'  => 'alumnis#new' 
 
 
+  # You can have the root of your site routed with "root"
+  root 'welcome#index'
+  get 'students' => 'students#index'
+  get 'studentsignup' => 'students#new'
+  get 'alumnisignup' => 'alumnis#new'
+  post 'studentsignup' => 'students#create'
+  post 'alumnisignup' => 'alumnis#create'
+
+  
   #resource root for project
   #######################################
    match "/students" => "students#create", :via => [:get]
-   get   "/students" => "students#create"
-
+   post   "/students" => "students#create"
+   
    ########################################
-  resources :alumnis 
-  resources :projects
-  resources :students
+ 
+  
+  
   resources :articles do
   resources :comments
 end
@@ -44,6 +48,8 @@ end
 
   get 'articleslist/:id' =>'articles#index', as: :getarticles
   get 'allarticles'=>'articles#listallarticles', as: :allarticles
+
+  get 'listprojects' =>'alumnis#showprojects', as: :listprojects
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

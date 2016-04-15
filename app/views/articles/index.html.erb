@@ -9,7 +9,7 @@
   <ul class="w3-navbar w3-black">
    
       <% if Article.where("alumni_id = :alumni_id",
-      {alumni_id: session[:alumni_id]}).first %>
+      {alumni_id: session[:alumni_id]}).first || current_alumni %>
       <li><button class="w3-btn w3-red"><%= link_to 'New article', new_article_path %></button></li>
       <% end %>
   </ul>
@@ -29,7 +29,7 @@
         <button class="w3-btn w3-black"><%= link_to 'Destroy', article_path(article),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></button>
-        
+        <p><strong>Comments </strong><span class="w3-badge w3-red"><%="#{article.comments.count}"%></span></p> 
       <% end%>
     </footer>
     </div>
