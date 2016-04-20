@@ -37,4 +37,6 @@ Rails.application.configure do
 
   Paperclip.options[:content_type_mappings] = { jpg: "image/jpg" } 
 
+ 
+
 end

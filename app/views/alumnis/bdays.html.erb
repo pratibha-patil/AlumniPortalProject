@@ -1,0 +1,15 @@
+<html>
+<head></head>
+<body>
+	<table>
+		<tr>
+			<th>Name</th>
+
+		</tr>
+		<% @bdays.each do |bday| %>
+		<tr><td><%= bday.first_name%>&nbsp;<%= bday.last_name%></td>
+		</tr>
+		<% end%>
+	</table>
+</body>
+</html>

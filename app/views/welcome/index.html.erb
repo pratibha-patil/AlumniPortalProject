@@ -1,1 +1,5 @@
+<% if flash[:alert] %>
+    <div class="notice"><%= flash[:alert] %></div>
+  <% end %>
 <h1>Welcome Home Page<h1>
+	<%= link_to 'todays_birthdays',getbdays_path%>

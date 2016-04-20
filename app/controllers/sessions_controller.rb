@@ -5,9 +5,10 @@ class SessionsController < ApplicationController
 	  @student = Student.find_by_username(params[:session][:username])
 	  if @student && @student.authenticate(params[:session][:Password])
 	    session[:student_id] = @student.id
+	    flash[:message] = 'Login Successfully' 
 	    redirect_to '/students'
 	  else
-	  	flash[:message] = 'Invalid email/password combination' 
+	  	flash[:alert] = 'Invalid email/password combination' 
 	    redirect_to '/login'
 	  end 
     end

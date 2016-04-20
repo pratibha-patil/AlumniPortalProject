@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_alumni
 	def current_student 
 	  @current_student ||= Student.find(session[:student_id]) if session[:student_id] 
+	  
 	end
 	def require_student 
 	  redirect_to '/login' unless current_student 

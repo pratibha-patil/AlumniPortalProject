@@ -12,11 +12,7 @@ class ProjectsRequestsController < ApplicationController
           end
 	end
 
-	def requests
-		@projectrequest=ProjectRequest.where("alumni_id = :alumni_id AND status = :status",
-			{alumni_id: current_alumni.id, status: "false"})
-
-	end
+	
 	
 	def accept
 		@request = ProjectRequest.find(params[:id])
@@ -33,6 +29,10 @@ class ProjectsRequestsController < ApplicationController
 
 	end
 
+	def requests
+		@projectrequest=ProjectRequest.where("alumni_id = :alumni_id AND status = :status",
+			{alumni_id: current_alumni.id, status: "false"})
+	end
 	def update
       @request = ProjectRequest.where(params[:id])
 
@@ -42,10 +42,7 @@ class ProjectsRequestsController < ApplicationController
         render '/'
       end
    end
-   	def showprojects
-       @projectaccepted=ProjectRequest.where("alumni_id = :alumni_id AND status = :status",
-			{alumni_id: current_alumni.id, status: "true"})
-  	end
+  
    	private
   def request_params
     params.require(:project_requests).permit(:project_id, :alumni_id,:status)

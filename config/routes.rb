@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   resources :students
   resources :alumnis 
   resources :projects
+  
+  resources :password_resets
+
   #links to sessions actions
   get '/login' =>'sessions#new'
   post 'login' =>'sessions#create'
@@ -50,6 +55,14 @@ end
   get 'allarticles'=>'articles#listallarticles', as: :allarticles
 
   get 'listprojects' =>'alumnis#showprojects', as: :listprojects
+
+  get 'resetpassword' =>'students#resetpass', as: :resetpass
+  get 'reset' =>'students#reset', as: :reset
+
+  get 'resetpassworda' =>'alumnis#resetpassa', as: :resetpassa
+  get 'reseta' =>'alumnis#reseta', as: :reseta
+
+  get 'bdays' =>'alumnis#bdays', as: :getbdays
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

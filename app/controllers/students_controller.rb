@@ -31,6 +31,24 @@ class StudentsController < ApplicationController
         render 'edit'
       end
    end
+
+   def resetpass
+   end
+   def reset
+   
+    if @student=Student.where("email = :email",{email: params[:email]}).first
+          
+          
+          if @student.update_attribute(:password,params[:pass])
+          redirect_to '/'
+          else 
+          redirect_to resetpass_path
+          end
+     else 
+          redirect_to resetpass_path
+    end
+   end
+
   private
     
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -42,6 +42,24 @@ class AlumnisController < ApplicationController
   def showprojects
     @projects=current_alumni.projects
   end
+
+   def resetpassa
+   end
+   def reseta
+   
+    if @student=Alumni.where("email = :email",{email: params[:email]}).first
+          if @student.update_attribute(:password,params[:pass])
+            redirect_to '/'
+          else 
+            redirect_to resetpass_path
+          end
+    else 
+          redirect_to resetpass_path
+    end
+   end
+   def bdays
+       @bdays=Alumni.where("cast(STRFTIME('%d',birthdate)as int)= ? AND cast(STRFTIME('%m',birthdate)as int)= ?", Date.today.day,Date.today.month)
+   end
   private
     
     # Never trust parameters from the scary internet, only allow the white list through.

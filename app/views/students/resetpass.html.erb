@@ -1,0 +1,10 @@
+<p>Reset password</p>
+<%=form_tag reset_path,:method =>'get' do |f|%>
+	<p>Email</p>
+	<%= email_field :email, params[:email] %><br>
+	<p>New Password</p>
+	<%= text_field_tag :pass,params[:pass]%>
+		
+		<%= submit_tag "Done"%>
+	
+<% end %>

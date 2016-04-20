@@ -2,8 +2,10 @@
 <h1>For Alumni</h1>
 
 <%= form_for(:session, url: loginalumni_path) do |f| %> 
+
    <%= f.text_field :username ,:placeholder => "username"%>
   <%= f.password_field :Password, :placeholder => "Password" %> 
+  <%= link_to 'forgot password?', resetpassa_path%>
   <%= f.submit "Log in" %>
 <% end %>
 </div>
